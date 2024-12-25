@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCERT Hackathon - Quality Education</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(120deg, #1a2980 0%, #26d0ce 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            padding: 2rem 0;
+        }
+        
+        .main-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .school-header {
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .school-header:hover::after {
+            content: '📚';
+            position: absolute;
+            right: -30px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            animation: slideBook 0.6s ease forwards;
+        }
+
+        @keyframes slideBook {
+            from { right: -30px; opacity: 0; }
+            to { right: 10px; opacity: 1; }
+        }
+
+        .hackathon-badge {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            display: inline-block;
+            margin-top: 0.5rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .hackathon-badge:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: scale(1.05);
+        }
+
+        .progress-section {
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-section:hover::before {
+            content: '🎓';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            font-size: 1.5rem;
+            animation: graduateHat 1s ease forwards;
+        }
+
+        @keyframes graduateHat {
+            0% { top: -20px; transform: translateX(-50%) rotate(0deg); }
+            50% { top: 20px; transform: translateX(-50%) rotate(180deg); }
+            100% { top: -20px; transform: translateX(-50%) rotate(360deg); }
+        }
+
+        .progress {
+            height: 12px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            position: relative;
+        }
+
+        .progress-bar {
+            background: linear-gradient(90deg, #26d0ce 0%, #1a2980 100%);
+            animation: progressLoad 1.5s ease-out forwards;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 1.5rem;
+            height: 100%;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-card:hover .emoji-icon {
+            animation: bounce 0.8s ease infinite;
+        }
+
+        .feature-card:hover::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, 
+                rgba(255,255,255,0) 0%,
+                rgba(255,255,255,0.1) 50%,
+                rgba(255,255,255,0) 100%);
+            animation: shine 1.5s ease infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .emoji-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .feature-card:nth-child(1):hover::before {
+            content: '✏️';
+            animation: writingPencil 1s ease infinite;
+        }
+
+        .feature-card:nth-child(2):hover::before {
+            content: '📖';
+            animation: openBook 1s ease infinite;
+        }
+
+        .feature-card:nth-child(3):hover::before {
+            content: '🌟';
+            animation: sparkle 1s ease infinite;
+        }
+
+        @keyframes writingPencil {
+            0%, 100% { transform: rotate(-15deg); }
+            50% { transform: rotate(15deg); }
+        }
+
+        @keyframes openBook {
+            0% { transform: scaleX(1); }
+            50% { transform: scaleX(1.2); }
+            100% { transform: scaleX(1); }
+        }
+
+        @keyframes sparkle {
+            0% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.2) rotate(180deg); }
+            100% { transform: scale(1) rotate(360deg); }
+        }
+
+        .fade-up {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.6s ease forwards;
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1, h2, h3 {
+            font-weight: 600;
+        }
+
+        .lead {
+            font-weight: 400;
+            opacity: 0.9;
+        }
+
+        /* Added floating animation for main title */
+        .display-4 {
+            position: relative;
+            display: inline-block;
+        }
+
+        .display-4:hover::after {
+            content: '🎯';
+            position: absolute;
+            right: -40px;
+            animation: targetFloat 1s ease infinite;
+        }
+
+        @keyframes targetFloat {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(10px, -10px); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Rest of the HTML remains the same -->
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="main-card">
+                    <div class="school-header text-center fade-up" style="animation-delay: 0.1s">
+                        <h2>N. W-C.M.C. Primary School No: 4</h2>
+                        <p class="lead mb-2">Jangamwadi, Nanded</p>
+                        <div class="hackathon-badge">
+                            SCERT Hackathon - 2024-25
+                        </div>
+                    </div>
+
+                    <div class="text-center fade-up" style="animation-delay: 0.3s">
+                        <h1 class="display-4 mb-3">Quality Education</h1>
+                        <p class="lead">Building the Future of Learning</p>
+                    </div>
+
+                    <div class="progress-section fade-up" style="animation-delay: 0.5s">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h5 class="mb-0">Project Progress</h5>
+                            <span>75%</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="75" 
+                                 aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <div class="feature-card text-center fade-up" style="animation-delay: 0.7s">
+                                <div class="emoji-icon">🎯</div>
+                                <h3>Innovation</h3>
+                                <p>Pioneering new teaching methods</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="feature-card text-center fade-up" style="animation-delay: 0.9s">
+                                <div class="emoji-icon">💡</div>
+                                <h3>Quality</h3>
+                                <p>Excellence in education delivery</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="feature-card text-center fade-up" style="animation-delay: 1.1s">
+                                <div class="emoji-icon">🚀</div>
+                                <h3>Growth</h3>
+                                <p>Continuous improvement and learning</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
